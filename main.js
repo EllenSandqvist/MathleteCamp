@@ -128,31 +128,34 @@ function showResult(rights) {
     const resultHeading = document.querySelector('.result-heading');
     const resultText = document.querySelector('.result-text');
     const resultImg = document.createElement('img');
+
     resultImg.classList.add('result-image');
+
+    //random number to randomize image
+    const randomNum = Math.floor(Math.random() * 5) + 1;
+    console.log("slumpnummer= " + randomNum);
+    
 
     if(rights === 10){
         resultHeading.textContent = "🏆 ALLA RÄTT! Ronaldo-klass!!! 🏆";
-        resultText.textContent = "Grymt jobbat! Du vinner matte-guldbollen!";
-        resultImg.setAttribute('src', './images/ronaldo.jpg');    
+        resultText.textContent = "Grymt jobbat! Du vinner matte-guldbollen!";  
     } else if (rights < 10 && rights >= 8) {
         resultHeading.textContent = `SNYGGT! Du fick ${rights} rätt av 10. Messi-klass! ⚽`;
         resultText.textContent = "Försök igen och se om du kan få alla rätt.";
-        resultImg.setAttribute('src', './images/messi.jpg');
     } else if (rights < 8 && rights >= 6) {
         resultHeading.textContent = `STABILT! Du fick ${rights} rätt av 10. Mbappé-klass! ⭐`;
         resultText.textContent = "Försök igen och se om du är bra nog för Real Madrid.";
-        resultImg.setAttribute('src', './images/mbappe.jpg');
     } else if (rights < 6 && rights >= 3) {
         resultHeading.textContent = `Godkänt! Du fick ${rights} rätt av 10.`;
         resultText.textContent = "Du är bra nog för Allsvenskan ✅. Försök igen och se om du kan bli utlandsproffs.";
-        resultImg.setAttribute('src', './images/allsvenskan.jpg');
     } else {
         resultHeading.textContent = `Du fick ${rights} rätt av 10. Träna mer! 💟`;
         resultText.textContent = "Jag ser att du har det som krävs. Försök igen.";
-        resultImg.setAttribute('src', './images/fotball.jpg');
     }
+    resultImg.setAttribute('src', `./images/fotball${randomNum}.jpg`);
     resultText.append(resultImg);
 }
+
 
 //* Function to hide modal
 closeModal.addEventListener('click', () => {
