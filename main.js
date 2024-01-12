@@ -132,7 +132,7 @@ function showResult(rights) {
     resultImg.classList.add('result-image');
 
     //random number to randomize image
-    const randomNum = Math.floor(Math.random() * 5) + 1;
+    const randomNum = Math.floor(Math.random() * 10) + 1;
     console.log("slumpnummer= " + randomNum);
     
 
@@ -150,7 +150,7 @@ function showResult(rights) {
         resultText.textContent = "Du är bra nog för Allsvenskan ✅. Försök igen och se om du kan bli utlandsproffs.";
     } else {
         resultHeading.textContent = `Du fick ${rights} rätt av 10. Träna mer! 💟`;
-        resultText.textContent = "Jag ser att du har det som krävs. Försök igen.";
+        resultText.textContent = "Härifrån kan det bara bli bättre. Försök igen.";
     }
     resultImg.setAttribute('src', `./images/fotball${randomNum}.jpg`);
     resultText.append(resultImg);
