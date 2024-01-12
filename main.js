@@ -137,20 +137,20 @@ function showResult(rights) {
     
 
     if(rights === 10){
-        resultHeading.textContent = "🏆 ALLA RÄTT! Ronaldo-klass!!! 🏆";
+        resultHeading.textContent = "🏆 ALLA RÄTT! Du är en mattemästare på fotbollsplanen!!! 🏆";
         resultText.textContent = "Grymt jobbat! Du vinner matte-guldbollen!";  
     } else if (rights < 10 && rights >= 8) {
-        resultHeading.textContent = `SNYGGT! Du fick ${rights} rätt av 10. Messi-klass! ⚽`;
+        resultHeading.textContent = `SNYGGT! Du fick ${rights} rätt av 10. Du dribblar genom talen som en mästare! ⚽`;
         resultText.textContent = "Försök igen och se om du kan få alla rätt.";
     } else if (rights < 8 && rights >= 6) {
-        resultHeading.textContent = `STABILT! Du fick ${rights} rätt av 10. Mbappé-klass! ⭐`;
-        resultText.textContent = "Försök igen och se om du är bra nog för Real Madrid.";
+        resultHeading.textContent = `STABILT! Du fick ${rights} rätt av 10. Du är på väg att bli en sann mattehjälte! ⭐`;
+        resultText.textContent = "Försök igen, nästa gång blir du ännu starkare! 💪🔢";
     } else if (rights < 6 && rights >= 3) {
         resultHeading.textContent = `Godkänt! Du fick ${rights} rätt av 10.`;
-        resultText.textContent = "Du är bra nog för Allsvenskan ✅. Försök igen och se om du kan bli utlandsproffs.";
+        resultText.textContent = "Ibland är det svårt, men ge aldrig upp. Fortsätt kämpa, du är fantastisk! 🌟👏";
     } else {
         resultHeading.textContent = `Du fick ${rights} rätt av 10. Träna mer! 💟`;
-        resultText.textContent = "Härifrån kan det bara bli bättre. Försök igen.";
+        resultText.textContent = "Ingen fara, stjärna! Ibland har även de bästa dagar när de träffar stolpen.🌈💪" 
     }
     resultImg.setAttribute('src', `./images/fotball${randomNum}.jpg`);
     resultText.append(resultImg);
