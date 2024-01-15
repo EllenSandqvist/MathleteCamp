@@ -10,16 +10,21 @@ let randomNumber1 = null;
 let randomNumber2 = null;
 let operator = '';
 
-let numOfRightAnswers = 0;
-
 let resultArray = [];
 let userAnswerArray = [];
 
+let numOfRightAnswers = 0;
+let isProcessing = false;
+
 
 for(let i = 0; i < 10; i++){
+    //function to generate random numbers
     randomNumbers();  
-    const mathDiv = document.createElement('div');
+    //function to generate random operator
+    randomOperator();
 
+    //create Div and fill with math problem
+    const mathDiv = document.createElement('div');
     mathDiv.textContent = `${randomNumber1} ${operator} ${randomNumber2} = `;
 
     //use index for div id
@@ -53,8 +58,6 @@ function randomNumbers(){
     randomNumber1 = Math.floor(Math.random()*11);
     randomNumber2 = Math.floor(Math.random()*11);
     console.log(randomNumber1, randomNumber2); 
-
-    randomOperator(); 
 }
 
 //* Function to generate random operator, + or -
@@ -80,6 +83,13 @@ function randomOperator(){
 
 //* Function to check answers
 checkAnswerBtn.addEventListener('click', function(){
+    //if statement to prevent user from clicking again before results has been shown
+    if(isProcessing){
+        return;
+    }
+
+    isProcessing = true;
+
     for(let i = 0; i < 10; i++){
         const userInput = document.getElementById('input-' + i);
         const mathDiv = document.getElementById('div-' + i);
@@ -138,10 +148,14 @@ function showResult(rights) {
 
     if(rights === 10){
         resultHeading.textContent = "🏆 ALLA RÄTT! Du är en mattemästare på fotbollsplanen!!! 🏆";
-        resultText.textContent = "Grymt jobbat! Du vinner matte-guldbollen!";  
+        resultText.textContent = "Grymt jobbat! Du vinner matte-guldbollen!";
+        resultImg.setAttribute('src', `./images/fotball${randomNum}.jpg`);
+        resultText.append(resultImg);  
     } else if (rights < 10 && rights >= 8) {
         resultHeading.textContent = `SNYGGT! Du fick ${rights} rätt av 10. Du dribblar genom talen som en mästare! ⚽`;
         resultText.textContent = "Försök igen och se om du kan få alla rätt.";
+        resultImg.setAttribute('src', `./images/fotball${randomNum}.jpg`);
+        resultText.append(resultImg); 
     } else if (rights < 8 && rights >= 6) {
         resultHeading.textContent = `STABILT! Du fick ${rights} rätt av 10. Du är på väg att bli en sann mattehjälte! ⭐`;
         resultText.textContent = "Försök igen, nästa gång blir du ännu starkare! 💪🔢";
@@ -152,14 +166,14 @@ function showResult(rights) {
         resultHeading.textContent = `Du fick ${rights} rätt av 10. Träna mer! 💟`;
         resultText.textContent = "Ingen fara, stjärna! Ibland har även de bästa dagar när de träffar stolpen.🌈💪" 
     }
-    resultImg.setAttribute('src', `./images/fotball${randomNum}.jpg`);
-    resultText.append(resultImg);
+    
 }
 
 
 //* Function to hide modal
 closeModal.addEventListener('click', () => {
     modal.classList.add('modal-hidden');
+    isProcessing = false;
     location.reload();
 });
 
