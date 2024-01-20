@@ -156,6 +156,7 @@ button {
     transform: scale(1.2);
 }
 
+/* ----- media query 1 ----- */
 @media (max-width: 900px){
     body {
         min-height: 100vh;
@@ -198,6 +199,26 @@ button {
         padding: 0.2em 0.7em;
     }
 
+    .modal-content {
+        margin: 7vh auto;
+        padding: 2em;
+        max-width: 450px;
+    }
+    
+    .modal h3 {
+        margin-top: 0.5em;
+        font-size: 1.6rem;
+    }
+    
+    .modal p {
+        font-size: 1.2rem;
+    }
+    
+    .result-image {
+        width: 80%;
+    }
+
+    /* ----- media query 2 ----- */
     @media (max-width: 500px){
         body {
             justify-content: center;
@@ -233,6 +254,15 @@ button {
             margin-bottom: 1em;
             font-size: 1rem;
             padding: 0.3em 0.5em;
+        }
+
+        .modal-content {
+            margin: 5vh auto;
+            max-width: 350px;
+        }
+        
+        .modal h3 {
+            font-size: 1.3rem;
         }
     }
 }
