@@ -12,7 +12,6 @@ body {
     justify-content: center;
     background-image: url('./images/fotbollsplan.jpg');
     font-family: 'Boogaloo', sans-serif;
-
 }
 
 h1 {
@@ -157,3 +156,83 @@ button {
     transform: scale(1.2);
 }
 
+@media (max-width: 900px){
+    body {
+        min-height: 100vh;
+        background-image: url('./images/fotbollsplan.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        font-family: 'Boogaloo', sans-serif;
+    }
+
+    h1 {
+        margin-top: 1em;
+        margin-bottom: 0.5em;
+        font-size: 3rem;       
+    }
+
+    .blackboard {
+        display: grid;
+        grid-template-columns: auto 2em auto;
+        gap: 0.5em;
+        font-size: 1.4rem;
+        margin-bottom: 1.5em;
+    }
+
+    .math-div {
+        padding: 0.5em;
+    }
+
+    .input {
+        width: 2.5em;
+        font-size: 1.4rem;
+    }
+
+    .buttons {
+        column-gap: 2em;
+    }
+    
+    button {
+        margin-bottom: 2em;
+        font-size: 1.2rem;
+        padding: 0.2em 0.7em;
+    }
+
+    @media (max-width: 500px){
+        body {
+            justify-content: center;
+            gap: 2em;
+        }
+
+        h1 {
+            margin: 1em 0;
+            font-size: 2.5rem;       
+        }
+
+        .blackboard {
+            grid-template-columns: auto 0.5em auto;
+            row-gap: 1em;
+            font-size: 1.1rem;
+            margin-bottom: 2em;
+        }
+
+        .math-div {
+            padding: 0.3em;
+        }
+    
+        .input {
+            width: 2em;
+            font-size: 1.1rem;
+        }
+
+        .buttons {
+            column-gap: 2em;
+        }
+        
+        button {
+            margin-bottom: 1em;
+            font-size: 1rem;
+            padding: 0.3em 0.5em;
+        }
+    }
+}
