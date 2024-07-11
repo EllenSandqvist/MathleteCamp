@@ -280,6 +280,7 @@ button {
   /* ----- media query 2 ----- */
   @media (max-width: 600px) {
     .setup-modal-content {
+      margin: 1vh auto;
       padding: 0.5em 1em;
       border: 3px solid;
       width: 350px;
