@@ -217,6 +217,20 @@ button {
     font-size: 3rem;
   }
 
+  .setup-modal-content {
+    padding: 1em;
+    max-width: 600px;
+  }
+
+  .team-div figure {
+    padding: 5px;
+  }
+
+  .welcome-text {
+    font-size: 2rem;
+    margin-bottom: 1.5em;
+  }
+
   .blackboard {
     display: grid;
     grid-template-columns: auto 2em auto;
@@ -264,6 +278,22 @@ button {
   }
 
   /* ----- media query 2 ----- */
+  @media (max-width: 600px) {
+    .setup-modal-content {
+      padding: 0.5em 1em;
+      border: 3px solid;
+      width: 400px;
+      position: relative;
+      text-align: center;
+    }
+
+    .team-div {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.5em;
+    }
+  }
+
+  /* ----- media query 3 ----- */
   @media (max-width: 500px) {
     body {
       justify-content: center;
