@@ -228,7 +228,7 @@ button {
 
   .welcome-text {
     font-size: 2rem;
-    margin-bottom: 1.5em;
+    margin-bottom: 1em;
   }
 
   .blackboard {
@@ -282,14 +282,27 @@ button {
     .setup-modal-content {
       padding: 0.5em 1em;
       border: 3px solid;
-      width: 400px;
+      width: 350px;
       position: relative;
       text-align: center;
+    }
+
+    .welcome-text {
+      font-size: 1.5rem;
+      margin-bottom: 0.8em;
     }
 
     .team-div {
       grid-template-columns: repeat(2, 1fr);
       gap: 0.5em;
+    }
+
+    .team-div img {
+      height: 75px;
+    }
+
+    .start-button {
+      margin-top: 1em;
     }
   }
 
