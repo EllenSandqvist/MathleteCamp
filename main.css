@@ -1,268 +1,313 @@
 ::before,
 ::after,
 * {
-    box-sizing: border-box;
-    margin: 0;
+  box-sizing: border-box;
+  margin: 0;
 }
 
 body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-image: url('./images/fotbollsplan.jpg');
-    font-family: 'Boogaloo', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: url("./images/fotbollsplan.jpg");
+  font-family: "Boogaloo", sans-serif;
 }
 
 h1 {
-    margin-top: 1.3em;
-    margin-bottom: 1.1em;
-    font-size: 5rem;
-    padding: 0.2em 0.5em;
-    border-radius: 20px;
-    color: #8b4513;
-    background-color: #ffd700;
-    border: 4px solid #827114;
-    box-shadow: 5px 5px 10px #f7e47a;
+  margin-top: 1.3em;
+  margin-bottom: 1.1em;
+  font-size: 5rem;
+  padding: 0.2em 0.5em;
+  border-radius: 20px;
+  color: #8b4513;
+  background-color: #ffd700;
+  border: 4px solid #827114;
+  box-shadow: 5px 5px 10px #f7e47a;
 }
 
 .blackboard {
-    display: grid;
-    grid-template-columns: auto 8em auto;
-    gap: 1em;
-    font-size: 1.8rem;
-    margin-bottom: 2.5em;
+  display: grid;
+  grid-template-columns: auto 8em auto;
+  gap: 1em;
+  font-size: 1.8rem;
+  margin-bottom: 2.5em;
 }
 
 .math-div {
-    grid-column: 1 / span 1;
-    padding: 0.7em;
-    background-color: rgba(76, 156, 76, 0.7);
-    border-radius: 20px;
-    color: white;
+  grid-column: 1 / span 1;
+  padding: 0.7em;
+  background-color: rgba(76, 156, 76, 0.7);
+  border-radius: 20px;
+  color: white;
 }
 
 .math-div:nth-child(2n) {
-    grid-column: 4 / span 1;
+  grid-column: 4 / span 1;
 }
 
 .input {
-    margin-left: 0.3em;
-    border: none;
-    width: 3em;
-    font-size: 1.8rem;
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 0.3em 0;
-    text-align: center;
-    border-radius: 10px;
-    font-family: 'Boogaloo', sans-serif;
+  margin-left: 0.3em;
+  border: none;
+  width: 3em;
+  font-size: 1.8rem;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 0.3em 0;
+  text-align: center;
+  border-radius: 10px;
+  font-family: "Boogaloo", sans-serif;
 }
 
 .outcome {
-    display: inline;
-    margin-left: 1em;
+  display: inline;
+  margin-left: 1em;
 }
 
 .buttons {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 3em;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 3em;
 }
 
 button {
-    font-size: 1.5rem;
-    border-radius: 10px;
-    padding: 0.2em 1em;
-    cursor: pointer;
-    transition: all 0.5s ease;
+  font-size: 1.5rem;
+  border-radius: 10px;
+  padding: 0.2em 1em;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+.start-button {
+  margin-top: 2em;
 }
 
 #check-answers-button {
-    background-color: #9e4caf;
-    color: #fff;
+  background-color: #9e4caf;
+  color: #fff;
 }
 
 #check-answers-button:hover {
-    background-color: #c47adc;
-    box-shadow: 3px 3px 3px #707070;
-    transform: scale(1.3);
+  background-color: #c47adc;
+  box-shadow: 3px 3px 3px #707070;
+  transform: scale(1.3);
 }
 
-#reload-button {
-    background-color: #3498db;
-    color: #fff;
+#reload-button,
+.start-button {
+  background-color: #3498db;
+  color: #fff;
 }
 
-#reload-button:hover {
-    background-color: #52a6de;
-    box-shadow: 3px 3px 3px #707070;
-    transform: scale(1.3);
+#reload-button:hover,
+.start-button:hover {
+  background-color: #52a6de;
+  box-shadow: 3px 3px 3px #707070;
+  transform: scale(1.3);
 }
 
-.modal-hidden {
-    display: none;
+.modal-hidden,
+.setup-modal-hidden {
+  display: none;
 }
 
-.modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+.modal,
+.setup-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
-.modal-content {
-    background-color: white;
-    margin: 18vh auto;
-    padding: 3em;
-    border: 3px solid;
-    max-width: 650px;
-    position: relative;
-    text-align: center;
+.modal-content,
+.setup-modal-content {
+  background-color: white;
+  margin: 5vh auto;
+  padding: 3em;
+  border: 3px solid;
+  max-width: 650px;
+  position: relative;
+  text-align: center;
+}
+
+.team-div {
+  margin-top: 0.5em;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto;
+  gap: 2em;
+}
+
+.team-div img {
+  height: 100px;
+}
+
+.team-div figure {
+  padding: 15px;
+  cursor: pointer;
+}
+
+.team-div figure:hover {
+  background-color: hsl(0, 0%, 90%);
+  border-radius: 5px;
+}
+
+.chosen-team {
+  border: 2px solid red;
+  border-radius: 5px;
+}
+
+.welcome-text {
+  font-size: 2.5rem;
+  margin-bottom: 1.5em;
 }
 
 .modal h3 {
-    font-size: 2rem;
-    margin-bottom: 1em;
+  font-size: 1.5rem;
 }
 
 .modal p {
-    font-size: 1.6rem;
+  font-size: 1.6rem;
 }
 
 .result-image {
-    margin-top: 1em;
+  margin-top: 1em;
+  max-height: 500px;
+}
+
+.player-name {
+  font-weight: bold;
 }
 
 .close {
-    font-family: initial;
-    color: black;
-    position: absolute;
-    top: 0.2em;
-    right: 0.3em;
-    font-size: 2.8rem;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    width: 20px;
-    height: 20px;
+  font-family: initial;
+  color: black;
+  position: absolute;
+  top: 0.2em;
+  right: 0.3em;
+  font-size: 2.8rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  width: 20px;
+  height: 20px;
 }
 
 .close:hover,
 .close:focus {
-    text-decoration: none;
-    cursor: pointer;
-    transform: scale(1.2);
+  text-decoration: none;
+  cursor: pointer;
+  transform: scale(1.2);
 }
 
 /* ----- media query 1 ----- */
-@media (max-width: 900px){
+@media (max-width: 900px) {
+  body {
+    min-height: 100vh;
+    background-image: url("./images/fotbollsplan.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: "Boogaloo", sans-serif;
+  }
+
+  h1 {
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+    font-size: 3rem;
+  }
+
+  .blackboard {
+    display: grid;
+    grid-template-columns: auto 2em auto;
+    gap: 0.5em;
+    font-size: 1.4rem;
+    margin-bottom: 1.5em;
+  }
+
+  .math-div {
+    padding: 0.5em;
+  }
+
+  .input {
+    width: 2.5em;
+    font-size: 1.4rem;
+  }
+
+  .buttons {
+    column-gap: 2em;
+  }
+
+  button {
+    margin-bottom: 2em;
+    font-size: 1.2rem;
+    padding: 0.2em 0.7em;
+  }
+
+  .modal-content {
+    margin: 7vh auto;
+    padding: 2em;
+    max-width: 450px;
+  }
+
+  .modal h3 {
+    margin-top: 0.5em;
+    font-size: 1.6rem;
+  }
+
+  .modal p {
+    font-size: 1.2rem;
+  }
+
+  .result-image {
+    width: 80%;
+  }
+
+  /* ----- media query 2 ----- */
+  @media (max-width: 500px) {
     body {
-        min-height: 100vh;
-        background-image: url('./images/fotbollsplan.jpg');
-        background-size: cover;
-        background-repeat: no-repeat;
-        font-family: 'Boogaloo', sans-serif;
+      justify-content: center;
+      gap: 2em;
     }
 
     h1 {
-        margin-top: 1em;
-        margin-bottom: 0.5em;
-        font-size: 3rem;       
+      margin: 1em 0;
+      font-size: 2.5rem;
     }
 
     .blackboard {
-        display: grid;
-        grid-template-columns: auto 2em auto;
-        gap: 0.5em;
-        font-size: 1.4rem;
-        margin-bottom: 1.5em;
+      grid-template-columns: auto 0.5em auto;
+      row-gap: 1em;
+      font-size: 1.1rem;
+      margin-bottom: 2em;
     }
 
     .math-div {
-        padding: 0.5em;
+      padding: 0.3em;
     }
 
     .input {
-        width: 2.5em;
-        font-size: 1.4rem;
+      width: 2em;
+      font-size: 1.1rem;
     }
 
     .buttons {
-        column-gap: 2em;
+      column-gap: 2em;
     }
-    
+
     button {
-        margin-bottom: 2em;
-        font-size: 1.2rem;
-        padding: 0.2em 0.7em;
+      margin-bottom: 1em;
+      font-size: 1rem;
+      padding: 0.3em 0.5em;
     }
 
     .modal-content {
-        margin: 7vh auto;
-        padding: 2em;
-        max-width: 450px;
+      margin: 5vh auto;
+      max-width: 350px;
     }
-    
+
     .modal h3 {
-        margin-top: 0.5em;
-        font-size: 1.6rem;
+      font-size: 1.3rem;
     }
-    
-    .modal p {
-        font-size: 1.2rem;
-    }
-    
-    .result-image {
-        width: 80%;
-    }
-
-    /* ----- media query 2 ----- */
-    @media (max-width: 500px){
-        body {
-            justify-content: center;
-            gap: 2em;
-        }
-
-        h1 {
-            margin: 1em 0;
-            font-size: 2.5rem;       
-        }
-
-        .blackboard {
-            grid-template-columns: auto 0.5em auto;
-            row-gap: 1em;
-            font-size: 1.1rem;
-            margin-bottom: 2em;
-        }
-
-        .math-div {
-            padding: 0.3em;
-        }
-    
-        .input {
-            width: 2em;
-            font-size: 1.1rem;
-        }
-
-        .buttons {
-            column-gap: 2em;
-        }
-        
-        button {
-            margin-bottom: 1em;
-            font-size: 1rem;
-            padding: 0.3em 0.5em;
-        }
-
-        .modal-content {
-            margin: 5vh auto;
-            max-width: 350px;
-        }
-        
-        .modal h3 {
-            font-size: 1.3rem;
-        }
-    }
+  }
 }
