@@ -1,12 +1,31 @@
-# MathleteChamp
+# Matte-Matchen
 
-## Beskrivning
-Ett spel med fotbollstema för att träna enkel matte. Lämpligt för barn i 5-6 års åldern. Tio mattetal slumpas fram som spelaren får svara på. Räknesätten är addition och subtraktion. 
+## Om spelet
 
-## Spelregler
-- Tio enkla additions eller subtraktions tal slumpas fram.
-- Användaren skriver in sina svar.
-- Användaren trycker på rätta knappen varpå antal rätta svar visas.  
-- Nya tal genereras efter att en spelomgång är rättad. Nya tal kan också genereras genom "Ladda nya tal"-knappen.
+Matte-Matchen är ett fotbollsinspirerat spel för att träna enkla matematiska färdigheter. Spelet riktar sig till barn i åldern 5–8 år och kombinerar glädjen i fotboll med grundläggande addition och subtraktion.
+
+## Så spelar du
+
+1. Välj ditt favoritlag bland några av Europas största fotbollsklubbar.
+
+2. Tio matteproblem genereras slumpmässigt – räknesätten är + och -.
+
+3. Skriv in dina svar direkt i fälten.
+
+4. Tryck på “Rätta svar” för att se hur många du fått rätt.
+
+5. Vid 8 rätt eller fler visas en slumpmässig spelare från det lag du valt.
+
+6. Tryck på “Ladda nya tal” för att spela igen med nya uppgifter.
+
+## Teknik och implementation
+
+- HTML, CSS och JavaScript
+
+- Dynamisk DOM-manipulation för att skapa frågor och visa resultat
+
+- API-anrop till TheSportsDB för att hämta spelaruppgifter
+
+- Responsiv och barnvänlig layout
 
 [Här kan du testa spelet](https://mathletecamp.netlify.app/)

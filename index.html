@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="main.js" defer></script>
+    <script type="module" src="./js/main.js" defer></script>
     <link rel="stylesheet" href="main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,7 +13,7 @@
     <title>Matteträning - enkla tal för att lära dig plus och minus</title>
 </head>
 <body>
-    <h1>Mathlete Camp</h1>
+    <h1>Matte-Matchen</h1>
     <div class="blackboard"></div>
     <div class="buttons">
         <button id="check-answers-button">Rätta!</button>
@@ -22,7 +22,7 @@
 
     <div class="setup-modal">
         <div class="setup-modal-content">
-            <h2 class="welcome-text">Välkommen till Mathlete Camp!</h2>
+            <h2 class="welcome-text">Välkommen till Matte-Matchen!</h2>
             <h3 class="choose-team-h3">Välj ditt favorit fotbollslag: </h3>
             <div class="team-div">
                 <figure role="button" data-team="barcelona">
@@ -58,7 +58,7 @@
                     <figcaption>Real Madrid</figcaption>
                 </figure>
             </div>
-            <button class="start-button">Starta Spelet</button>
+            <button class="start-button" disabled>Starta Spelet</button>
             <p class="chosen-team-text"></p>
         </div>
     </div>
