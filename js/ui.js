@@ -4,13 +4,13 @@ import {
   calculateResult,
 } from "./gameLogic.js";
 
-export function generateQuestions(blackBoard, resultArray) {
+export function generateQuestions(blackBoard, resultArray, mathOp) {
   blackBoard.innerHTML = "";
   resultArray.length = 0;
 
   for (let i = 0; i < 10; i++) {
-    const [a, b] = generateRandomNumbers();
-    const op = generateRandomOperator(a, b);
+    const [a, b] = generateRandomNumbers(mathOp);
+    const op = generateRandomOperator(a, b, mathOp);
     const result = calculateResult(a, b, op);
     resultArray.push(result);
 
