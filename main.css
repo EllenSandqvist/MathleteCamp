@@ -79,10 +79,11 @@ button {
   margin-top: 2em;
 }
 
-.start-button:disabled,
-.start-button:disabled:hover {
+.start-button.disabled,
+.start-button.disabled:hover {
   background-color: #707070;
-  pointer-events: none;
+  cursor: auto;
+  transform: none;
 }
 
 #check-answers-button {
@@ -135,9 +136,44 @@ button {
   margin: 5vh auto;
   padding: 2em;
   border: 3px solid;
-  max-width: 650px;
+  max-width: 750px;
   position: relative;
   text-align: center;
+}
+
+.mathOperation-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4em;
+  margin-bottom: 1.5em;
+}
+
+.mathOption {
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.mathOption input[type="radio"]:hover + img {
+  outline: 3px solid #363636;
+  outline-offset: -1px;
+  border-radius: 25px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.25);
+  transform: scale(1.03);
+}
+
+.mathOption input[type="radio"]:checked + img,
+.mathOption input[type="radio"]:checked + img {
+  outline: 4px solid rgb(40, 168, 57);
+  outline-offset: -1px;
+  border-radius: 25px;
+  box-shadow: 0 0 15px rgba(40, 168, 57, 0.7);
+  transform: scale(1.07);
+  transition: all 0.2s ease;
+}
+
+.mathOperation-div input {
+  display: none;
 }
 
 .team-div {
@@ -146,6 +182,24 @@ button {
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: auto;
   gap: 2em;
+}
+
+.missingChoice {
+  border: 3px solid red;
+  border-radius: 5px;
+  padding: 1em;
+}
+
+.missingMathChoice,
+.missingTeamChoice {
+  color: red;
+  font-size: 1.2rem;
+  padding-bottom: 0.2em;
+}
+
+.missingMathChoice.hidden,
+.missingTeamChoice.hidden {
+  display: none;
 }
 
 .team-div img {
@@ -160,22 +214,28 @@ button {
 .team-div figure:hover {
   background-color: hsl(0, 0%, 90%);
   border-radius: 5px;
+  transform: scale(1.03);
 }
 
 .chosen-team {
-  border: 2px solid red;
+  outline: 4px solid rgb(40, 168, 57);
+  outline-offset: -1px;
   border-radius: 5px;
+  box-shadow: 0 0 15px rgba(40, 168, 57, 0.7);
+  transform: scale(1.07);
+  transition: all 0.2s ease;
 }
 
 .welcome-text {
   font-size: 2.5rem;
-  margin-bottom: 1.5em;
+  margin-bottom: 1em;
 }
 
 .modal h3,
 .setup-modal h3 {
   font-size: 1.5rem;
   margin-bottom: 1em;
+  font-weight: normal;
 }
 
 .modal p {

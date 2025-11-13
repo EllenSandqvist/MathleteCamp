@@ -2,8 +2,12 @@ import { generateQuestions } from "./ui.js";
 import { showResult } from "./resultHandler.js";
 
 //variable for DOM nodes
+const mathOpBtns = document.querySelectorAll('input[name="mathOp"]');
+const mathOpDiv = document.querySelector(".mathOperation-div");
 const teamDiv = document.querySelector(".team-div");
 const startButton = document.querySelector(".start-button");
+const missingMathChoice = document.querySelector(".missingMathChoice");
+const missingTeamChoice = document.querySelector(".missingTeamChoice");
 const blackBoard = document.querySelector(".blackboard");
 const checkAnswerBtn = document.getElementById("check-answers-button");
 const reloadBtn = document.getElementById("reload-button");
@@ -12,6 +16,7 @@ const closeModal = document.getElementById("link-modal-close");
 
 // Game settings
 const gameState = {
+  mathOp: "",
   teamID: null,
   chosenTeam: "",
   resultArray: [],
@@ -20,19 +25,36 @@ const gameState = {
   isProcessing: false,
 };
 
-function handleTeamClick(team) {
-  const map = {
-    barcelona: 133739,
-    juventus: 133676,
-    "bayern-munchen": 133664,
-    "manchester-city": 133613,
-    "manchester-united": 133612,
-    milan: 133667,
-    psg: 133714,
-    "real-madrid": 133738,
-  };
-  gameState.teamID = map[team] || null;
-  startButton.disabled = false;
+// === HELPERS ===
+function updateStartButtonState() {
+  const { mathOp, chosenTeam } = gameState;
+
+  if (mathOp) {
+    mathOpDiv.classList.remove("missingChoice");
+    missingMathChoice.classList.add("hidden");
+  }
+  if (chosenTeam) {
+    teamDiv.classList.remove("missingChoice");
+    missingTeamChoice.classList.add("hidden");
+  }
+  if (mathOp && chosenTeam) startButton.classList.remove("disabled");
+}
+
+function showMissingChoice(type) {
+  if (type === "math") {
+    mathOpDiv.classList.add("missingChoice");
+    missingMathChoice.classList.remove("hidden");
+  } else if (type === "team") {
+    teamDiv.classList.add("missingChoice");
+    missingTeamChoice.classList.remove("hidden");
+  }
+}
+
+// === EVENT HANDLERS ===
+
+function handleMathOpSelection(e) {
+  gameState.mathOp = e.target.value;
+  updateStartButtonState();
 }
 
 function handleTeamSelection(e) {
@@ -43,15 +65,33 @@ function handleTeamSelection(e) {
   document
     .querySelectorAll(".team-div figure")
     .forEach((el) => el.classList.remove("chosen-team"));
-  teamFigure.classList.add("chosen-team");
 
+  teamFigure.classList.add("chosen-team");
   gameState.chosenTeam = teamFigure.dataset.team;
-  handleTeamClick(gameState.chosenTeam);
+
+  const teamMap = {
+    barcelona: 133739,
+    juventus: 133676,
+    "bayern-munchen": 133664,
+    "manchester-city": 133613,
+    "manchester-united": 133612,
+    milan: 133667,
+    psg: 133714,
+    "real-madrid": 133738,
+  };
+
+  gameState.teamID = teamMap[gameState.chosenTeam] || null;
+  updateStartButtonState();
 }
 
 function handleStartGame() {
+  const { mathOp, chosenTeam } = gameState;
+
+  if (!mathOp) return showMissingChoice("math");
+  if (!chosenTeam) return showMissingChoice("team");
+
   document.querySelector(".setup-modal").classList.add("setup-modal-hidden");
-  generateQuestions(blackBoard, gameState.resultArray);
+  generateQuestions(blackBoard, gameState.resultArray, mathOp);
 }
 
 function handleCheckAnswers() {
@@ -105,6 +145,11 @@ function handleCloseModal() {
 }
 
 window.addEventListener("DOMContentLoaded", () => {
+  if (window.hasInitialized) return;
+  window.hasInitialized = true;
+  for (const mathOpbtn of mathOpBtns) {
+    mathOpbtn.addEventListener("change", handleMathOpSelection);
+  }
   teamDiv.addEventListener("click", handleTeamSelection);
   startButton.addEventListener("click", handleStartGame);
   checkAnswerBtn.addEventListener("click", handleCheckAnswers);

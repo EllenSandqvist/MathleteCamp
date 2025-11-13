@@ -23,7 +23,25 @@
     <div class="setup-modal">
         <div class="setup-modal-content">
             <h2 class="welcome-text">Välkommen till Matte-Matchen!</h2>
+            <h3 class="choose-mathOperation">Vad vill du träna idag? </h3>
+            <p class="missingMathChoice hidden">Välj ett alternativ</p>
+            <div class="mathOperation-div">
+                <div>
+                    <label class="mathOption plusMinus" for="plusMinus" title="Addition & Subtraktion">
+                        <input class="hidden" type="radio" name="mathOp" value="plusMinus" id="plusMinus">
+                        <img src="./images/plusMinus.svg" height="100" alt="A plus and a minus sign">
+                    </label>
+                </div>
+                <div>
+                    <label class="mathOption multiplyDivide" for="multiplyDivide" title="Multiplikation & Division">
+                        <input class="hidden" type="radio" name="mathOp" value="multiplyDivide" id="multiplyDivide">
+                        <img src="./images/multiplyDivide.svg" height="100" alt="A multiply and a division sign">
+                    </label>
+                    
+                </div>
+            </div>
             <h3 class="choose-team-h3">Välj ditt favorit fotbollslag: </h3>
+            <p class="missingTeamChoice hidden">Välj ett lag</p>
             <div class="team-div">
                 <figure role="button" data-team="barcelona">
                     <img src="./images/barcelona.png" alt="logo Barcelona">
@@ -58,7 +76,7 @@
                     <figcaption>Real Madrid</figcaption>
                 </figure>
             </div>
-            <button class="start-button" disabled>Starta Spelet</button>
+            <button class="start-button disabled">Starta Spelet</button>
             <p class="chosen-team-text"></p>
         </div>
     </div>
