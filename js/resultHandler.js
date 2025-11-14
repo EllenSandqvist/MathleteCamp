@@ -34,21 +34,28 @@ function getResultContent(rights) {
   }
 }
 
-export async function showResult(rights, teamID, modalEl) {
+export async function showResult(rights, teamID, elapsed, modalEl) {
   const content = getResultContent(rights);
   modalEl.querySelector(".result-heading").textContent = content.heading;
   modalEl.querySelector(".result-text").textContent = content.text;
+  modalEl.querySelector(".result-time").textContent = `Du klarade spelet på ${(
+    elapsed / 1000
+  ).toFixed(1)} sekunder.`;
 
   const container = modalEl.querySelector(".result-text");
   if (content.showPlayer && teamID) {
     const player = await getRandomPlayer(teamID);
     if (player) {
+      const imgDiv = document.createElement("div");
+      imgDiv.classList.add("img-div");
       const img = document.createElement("img");
       img.classList.add("result-image");
       img.setAttribute("src", player.strRender);
       const imgText = document.createElement("p");
+      imgText.classList.add("img-text");
       imgText.innerHTML = `<span class="player-name">${player.strPlayer}</span> ~ ${player.strPosition} i ${player.strTeam}`;
-      container.append(img, imgText);
+      imgDiv.append(img, imgText);
+      container.append(imgDiv);
     }
   }
   setTimeout(() => modalEl.classList.remove("modal-hidden"), 2000);

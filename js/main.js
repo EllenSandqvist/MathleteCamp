@@ -9,6 +9,7 @@ const startButton = document.querySelector(".start-button");
 const missingMathChoice = document.querySelector(".missingMathChoice");
 const missingTeamChoice = document.querySelector(".missingTeamChoice");
 const blackBoard = document.querySelector(".blackboard");
+const timerText = document.querySelector(".timer-text");
 const checkAnswerBtn = document.getElementById("check-answers-button");
 const reloadBtn = document.getElementById("reload-button");
 const modal = document.querySelector(".modal");
@@ -23,6 +24,11 @@ const gameState = {
   userAnswerArray: [],
   numOfRightAnswers: 0,
   isProcessing: false,
+  timer: {
+    startTime: null,
+    elapsed: 0,
+    intervalId: null,
+  },
 };
 
 // === HELPERS ===
@@ -48,6 +54,32 @@ function showMissingChoice(type) {
     teamDiv.classList.add("missingChoice");
     missingTeamChoice.classList.remove("hidden");
   }
+}
+
+function formatTime(ms) {
+  const totalSeconds = Math.floor(ms / 1000);
+  const tenths = Math.floor((ms % 1000) / 100);
+  const minutes = String(Math.floor(totalSeconds / 60)).padStart(2, "0");
+  const seconds = String(totalSeconds % 60).padStart(2, "0");
+  return `${minutes}:${seconds}:${tenths}`;
+}
+
+function startTimer() {
+  gameState.timer.startTime = Date.now();
+
+  gameState.timer.intervalId = setInterval(() => {
+    gameState.timer.elapsed = Date.now() - gameState.timer.startTime;
+    timerText.textContent = formatTime(gameState.timer.elapsed);
+  }, 100);
+
+  console.log("Timern startar: " + gameState.timer.startTime);
+}
+
+function stopTimer() {
+  let { elapsed } = gameState.timer;
+  elapsed = Date.now() - gameState.timer.startTime;
+  clearInterval(gameState.timer.intervalId);
+  console.log("Timern stoppas: " + elapsed);
 }
 
 // === EVENT HANDLERS ===
@@ -91,6 +123,7 @@ function handleStartGame() {
   if (!chosenTeam) return showMissingChoice("team");
 
   document.querySelector(".setup-modal").classList.add("setup-modal-hidden");
+  startTimer();
   generateQuestions(blackBoard, gameState.resultArray, mathOp);
 }
 
@@ -132,8 +165,13 @@ function handleCheckAnswers() {
       outcome.textContent += "❌";
     }
   }
-
-  showResult(gameState.numOfRightAnswers, gameState.teamID, modal);
+  stopTimer();
+  showResult(
+    gameState.numOfRightAnswers,
+    gameState.teamID,
+    gameState.timer.elapsed,
+    modal
+  );
 }
 
 function handleReload() {
