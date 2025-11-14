@@ -13,6 +13,7 @@ body {
   justify-content: space-evenly;
   background-image: url("./images/fotbollsplan.jpg");
   font-family: "Boogaloo", sans-serif;
+  position: relative;
 }
 
 h1 {
@@ -23,6 +24,16 @@ h1 {
   background-color: #ffd700;
   border: 4px solid #827114;
   box-shadow: 5px 5px 10px #f7e47a;
+}
+
+.timer-div {
+  background-color: white;
+  font-size: 3rem;
+  padding: 0.3em;
+  border-radius: 5px;
+  position: absolute;
+  top: 5%;
+  right: 3%;
 }
 
 .blackboard {
@@ -139,6 +150,7 @@ button {
   max-width: 750px;
   position: relative;
   text-align: center;
+  color: #333;
 }
 
 .mathOperation-div {
@@ -242,17 +254,44 @@ button {
   font-size: 1.4rem;
 }
 
+h3.result-heading {
+  font-size: 2rem;
+}
+
 .result-text {
   white-space: pre-line;
 }
 
+.modal .img-div {
+  border: 4px #edc147;
+  border-style: groove;
+  border-radius: 8px;
+  max-width: 450px;
+  margin: 0.5em auto;
+}
+
 .result-image {
-  margin: 0.5em 0;
-  max-height: 500px;
+  display: block;
+  margin: 0.2em auto;
+  max-height: 450px;
+}
+
+.img-text {
+  margin-bottom: 0.5em;
 }
 
 .player-name {
   font-weight: bold;
+}
+
+.modal-footer {
+  background-color: #d6b5e1;
+}
+
+.result-time {
+  font-size: 1.2rem;
+  text-align: center;
+  margin-top: 1em;
 }
 
 .close {
